@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>  
+        body {
+            background-image: url('/static/images/background2.jpeg');
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .card-title {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-control {
+            border: none;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .btn-primary {
+            border: none;
+            border-radius: 25px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .signup-link a {
+            color: #007bff;
+            text-decoration: underline;
+        }
+    </style>  
+</head>
+<body>
+    <div class="card">  
+        <h3 class="card-title">Autism Detection</h3>  
+        <form action="{{ url_for('login') }}" method="post"> 
+            <div class="form-group">  
+                <input type="text" id="username" name="username" required class="form-control" placeholder="Enter Email address">  
+            </div>  
+            <div class="form-group">  
+                <input type="password" id="password" name="password" required class="form-control" placeholder="Enter Password">  
+            </div>  
+            <button type="submit" class="btn btn-primary">Login</button> 
+        </form> 
+        <p class="signup-link">Don't have an account? <a href="{{ url_for('Signup') }}">Sign up</a></p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>  
+</body>
+</html>
